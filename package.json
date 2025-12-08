@@ -1,0 +1,35 @@
+{
+  "name": "brad-traversy-mern-stack-front-to-back-full-stack-react-redux-node",
+  "version": "1.0.0",
+  "description": "social media app for developers",
+  "homepage": "https://github.com/sayantan007pal/Brad-Traversy-MERN-Stack-Front-To-Back-Full-Stack-React-Redux-Node.js#readme",
+  "bugs": {
+    "url": "https://github.com/sayantan007pal/Brad-Traversy-MERN-Stack-Front-To-Back-Full-Stack-React-Redux-Node.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sayantan007pal/Brad-Traversy-MERN-Stack-Front-To-Back-Full-Stack-React-Redux-Node.js.git"
+  },
+  "license": "MIT",
+  "author": "Sayantan Pal",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "config": "^4.1.1",
+    "express": "^5.2.1",
+    "express-validators": "^1.0.4",
+    "gravatar": "^1.8.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.0.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
