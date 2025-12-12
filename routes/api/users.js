@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const gravatar = require("gravatar")
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+const config = require("config")
 const { check, validationResult } = require("express-validator");
 
 const User = require("../../models/User")
@@ -46,9 +48,21 @@ const { name, email, password } = req.body;
 
     await user.save();
 
-    // encrypt password
+    const payload = {
+        user: {
+            id: user.id
+        }
+    }
 
-    // return json web token
+    jwt.sign(
+        payload,
+        config.get("jwtSecret"), // imported from custom-environment-variables.json
+        {expiresIn: 360000},
+        (err, token) => {
+            if(err) throw err;
+            res.json({ token });
+        }   
+    );
 
 
     }
@@ -59,7 +73,7 @@ const { name, email, password } = req.body;
     }
 
     
-    res.send("Users")
+
 })
 
 module.exports = router
