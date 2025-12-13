@@ -85,4 +85,41 @@ router.post('/', [check("status", "Status is required").not
     }
 )
 
+// @route    GET api/profile
+// @desc     Get all users profile
+// @access   public
+
+router.get('/', async (req,res) => {
+    try{
+        const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+        res.json(profiles);
+
+
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send({msg: "Internal Server Error"})
+    }
+})
+
+
+// @route    GET api/profile/user/:user_id
+// @desc     Get user profile by user_id
+// @access   public
+
+router.get('/user/:user_id', async (req, res) => {
+    try {
+        const profile = await Profile.findOne({user: req.params.user_id}).populate("user", ["name", "avatar"]);
+        if(!profile) {
+            return res.status(400).json({msg: "profile not found"})
+        }
+        res.json(profile);
+    } catch (err) {
+        console.error(err.message);
+        if(err.kind == "ObjectId") {
+            return res.status(400).json({msg: "profile not found due to wrong ObjectId"});
+        }
+        res.status(500).send({msg: "Internal Server Error"})
+    }
+})
+
 module.exports = router
