@@ -5,7 +5,13 @@ import Navbar from './components/Layout/Navbar';
 import Landing from './components/Layout/Landing';
 import Register from './components/auth/register';
 import Login from './components/auth/login';
+//Redux
+import store from './store';
+import { Provider } from 'react-redux';
+
 const App = () => (
+  //Provider is a component that makes the redux store available to any nested components that need it
+  <Provider store={store}>
   <Router>
     <Fragment>
        <Navbar />
@@ -20,6 +26,7 @@ const App = () => (
 
     </Fragment>
   </Router>
+  </Provider>
 )
 
 
