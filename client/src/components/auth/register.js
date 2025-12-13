@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 const Register = () => {
     const [formData, setFormData] = React.useState({
@@ -38,7 +38,7 @@ const Register = () => {
 
                 
         //     }
-        // }
+        }
     };
 
     return (
